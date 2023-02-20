@@ -1,0 +1,64 @@
+{
+    "name": "schema",
+    "description": "schema of schema",
+    "additionalProperties": false,
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string",
+            "required": false
+        },
+        "key": {
+            "type": "string",
+            "required": false
+        },
+        "additionalProperties": {
+            "type": "boolean",
+            "required": false
+        },
+        "properties": {
+            "type": "map",
+            "items": {
+                "type": "object",
+                "$ref": "#/definitions/prop"
+            }
+        },
+        "definitions": {
+            "type": "map",
+            "items": {
+                "type": "object",
+                "$ref": "#"
+            },
+            "required": false
+        }
+    },
+    "definitions": {
+        "prop": {
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/prop",
+                    "required": false
+                },
+                "$ref": {
+                    "type": "string",
+                    "required": false
+                },
+                "contentMediaType": {
+                    "type": "string",
+                    "required": false
+                },
+                "required": {
+                    "type": "boolean",
+                    "required": false
+                }
+            }
+        }
+    }
+}
